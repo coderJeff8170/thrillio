@@ -1,4 +1,4 @@
-package entities;
+package com.cognizant.thrillio.entities;
 
 public class WebLink extends Bookmark {
     private String url;
@@ -18,5 +18,13 @@ public class WebLink extends Bookmark {
 
     public void setHost(String host) {
         this.host = host;
+    }
+
+    @Override
+    public String toString() {
+        return "WebLink{" + super.toString() +
+                " url='" + url + '\'' +
+                ", host='" + host + '\'' +
+                '}';
     }
 }

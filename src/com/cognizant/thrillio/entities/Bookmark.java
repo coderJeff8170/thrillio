@@ -1,4 +1,4 @@
-package entities;
+package com.cognizant.thrillio.entities;
 
 public class Bookmark {
     private long id;
@@ -27,5 +27,12 @@ public class Bookmark {
 
     public void setProfileUrl(String profileUrl) {
         this.profileUrl = profileUrl;
+    }
+
+    @Override
+    public String toString() {
+        return  "id=" + id +
+                ", title='" + title + '\'' +
+                ", profileUrl='" + profileUrl + '\'';
     }
 }

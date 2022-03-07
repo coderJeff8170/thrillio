@@ -1,22 +1,24 @@
-package managers;
+package com.cognizant.thrillio.managers;
 
-import entities.Book;
-import entities.Movie;
-import entities.WebLink;
-import org.w3c.dom.html.HTMLImageElement;
+import com.cognizant.thrillio.dao.BookmarkDao;
+import com.cognizant.thrillio.entities.Book;
+import com.cognizant.thrillio.entities.Bookmark;
+import com.cognizant.thrillio.entities.Movie;
+import com.cognizant.thrillio.entities.WebLink;
 
 /**
  * @author cognizant
  */
 public class BookmarkManager {
     private static BookmarkManager bookmarkManager = new BookmarkManager();
-
+    private static BookmarkDao dao = new BookmarkDao();
     private BookmarkManager() {
     }
 
     public static BookmarkManager getInstance() {
         return bookmarkManager;
     }
+
 
     public Book createBook(long id, String title, int publicationYear, String publisher, String[] authors, String genre, double amazonRating) {
         Book book = new Book();
@@ -56,5 +58,9 @@ public class BookmarkManager {
         movie.setImdbRating(imdbRating);
 
         return movie;
+    }
+
+    public Bookmark[][] getBookmarks() {
+        return dao.getBookmarks();
     }
 }

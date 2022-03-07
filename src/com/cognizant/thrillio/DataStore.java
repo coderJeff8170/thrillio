@@ -1,19 +1,21 @@
-import constants.BookGenre;
-import constants.Gender;
-import constants.MovieGenre;
-import constants.UserType;
-import entities.Bookmark;
-import entities.User;
-import entities.UserBookmark;
-import managers.BookmarkManager;
-import managers.UserManager;
+package com.cognizant.thrillio;
+
+import com.cognizant.thrillio.constants.BookGenre;
+import com.cognizant.thrillio.constants.Gender;
+import com.cognizant.thrillio.constants.MovieGenre;
+import com.cognizant.thrillio.constants.UserType;
+import com.cognizant.thrillio.entities.Bookmark;
+import com.cognizant.thrillio.entities.User;
+import com.cognizant.thrillio.entities.UserBookmark;
+import com.cognizant.thrillio.managers.BookmarkManager;
+import com.cognizant.thrillio.managers.UserManager;
 
 /**
  * @author cognizant
  */
 public class DataStore {
-    private static final int TOTAL_USER_COUNT = 5;
 
+    private static final int TOTAL_USER_COUNT = 5;
     private static final int BOOKMARK_TYPES_COUNT = 3;
     private static final int BOOKMARK_COUNT_PER_TYPE = 5;
     public static final int USER_BOOKMARK_LIMIT = 5;
@@ -22,7 +24,7 @@ public class DataStore {
     public static User[] getUsers() {
         return users;
     }
-    private static Bookmark[][] bookmarks = new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
+    public static Bookmark[][] bookmarks = new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
     public static Bookmark[][] getBookmarks() {
         return bookmarks;
     }
@@ -32,6 +34,7 @@ public class DataStore {
         loadUsers();
         loadWebLinks();
         loadMovies();
+        loadBooks();
     }
 
     private static void loadUsers() {

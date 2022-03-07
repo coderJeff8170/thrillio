@@ -1,4 +1,4 @@
-package entities;
+package com.cognizant.thrillio.entities;
 
 public class User {
     private long id;

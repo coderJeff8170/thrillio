@@ -1,4 +1,6 @@
-package entities;
+package com.cognizant.thrillio.entities;
+
+import java.util.Arrays;
 
 public class Movie extends Bookmark {
     private int releaseYear;
@@ -45,5 +47,16 @@ public class Movie extends Bookmark {
 
     public void setImdbRating(double imdbRating) {
         this.imdbRating = imdbRating;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" + super.toString() +
+                " releaseYear=" + releaseYear +
+                ", cast=" + Arrays.toString(cast) +
+                ", directors=" + Arrays.toString(directors) +
+                ", genre='" + genre + '\'' +
+                ", imdbRating=" + imdbRating +
+                '}';
     }
 }

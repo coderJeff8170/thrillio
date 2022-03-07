@@ -1,4 +1,4 @@
-package constants;
+package com.cognizant.thrillio.constants;
 
 /**
  * @author cognizant

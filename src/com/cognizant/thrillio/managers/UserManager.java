@@ -1,12 +1,14 @@
-package managers;
+package com.cognizant.thrillio.managers;
 
-import entities.User;
+import com.cognizant.thrillio.dao.UserDao;
+import com.cognizant.thrillio.entities.User;
 
 /**
  * @author cognizant
  */
 public class UserManager {
     private static UserManager userManager = new UserManager();
+    private static UserDao dao = new UserDao();
 
     private UserManager() {}
 
@@ -26,6 +28,10 @@ public class UserManager {
         user.setUserType(userType);
 
         return user;
+    }
+
+    public User[] getUsers() {
+        return dao.getUsers();
     }
 
 }
