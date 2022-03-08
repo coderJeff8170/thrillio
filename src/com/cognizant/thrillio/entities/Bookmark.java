@@ -1,6 +1,6 @@
 package com.cognizant.thrillio.entities;
 
-public class Bookmark {
+public abstract class Bookmark {
     private long id;
     private String title;
     private String profileUrl;
@@ -35,4 +35,6 @@ public class Bookmark {
                 ", title='" + title + '\'' +
                 ", profileUrl='" + profileUrl + '\'';
     }
+
+    public abstract boolean isKidFriendlyEligible();
 }

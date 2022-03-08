@@ -59,4 +59,9 @@ public class Movie extends Bookmark {
                 ", imdbRating=" + imdbRating +
                 '}';
     }
+
+    @Override
+    public boolean isKidFriendlyEligible() {
+        return false;
+    }
 }
