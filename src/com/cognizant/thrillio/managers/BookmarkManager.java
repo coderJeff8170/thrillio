@@ -1,10 +1,7 @@
 package com.cognizant.thrillio.managers;
 
 import com.cognizant.thrillio.dao.BookmarkDao;
-import com.cognizant.thrillio.entities.Book;
-import com.cognizant.thrillio.entities.Bookmark;
-import com.cognizant.thrillio.entities.Movie;
-import com.cognizant.thrillio.entities.WebLink;
+import com.cognizant.thrillio.entities.*;
 
 /**
  * @author cognizant
@@ -62,5 +59,14 @@ public class BookmarkManager {
 
     public Bookmark[][] getBookmarks() {
         return dao.getBookmarks();
+    }
+
+    public void saveUserBookmark(User user, Bookmark bookmark) {
+        //setup the association class (userbookmark)
+        UserBookmark userBookmark = new UserBookmark();
+        userBookmark.setUser(user);
+        userBookmark.setBookmark(bookmark);
+        //save userBookmark instance to data access object
+        dao.saveUserBookmark(userBookmark);
     }
 }

@@ -15,7 +15,7 @@ public class Launch {
     private static Bookmark[][] bookmarks;
 
     private static void loadData() {
-        System.out.println("loading data ...");
+        System.out.println("1. loading data ...");
         DataStore.loadData();
         users = UserManager.getInstance().getUsers();
         bookmarks = BookmarkManager.getInstance().getBookmarks();
@@ -39,10 +39,22 @@ public class Launch {
         }
     }
 
+    private static void startBookmarking() {
+        System.out.println("\n2. Bookmarking ...");
+        //invoke bookmark method for all users
+        for(User user : users) {
+            View.bookmark(user, bookmarks);
+        }
+    }
+
 
     public static void main(String[] args) {
+
         loadData();
+        startBookmarking();
     }
+
+
 
 
 }
