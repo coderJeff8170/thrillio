@@ -12,7 +12,7 @@ public class WebLinkTest {
     boolean isKidFriendlyEligible;
 
     @Test
-    public void testIsKidFriendlyEligible_shouldReturnFalse_ifPornInURL() {
+    public void isKidFriendlyEligible_shouldReturnFalse_ifPornInURL() {
         // Test 1: porn in url --false
         webLink = BookmarkManager.getInstance().createWebLink(2000, "Taming Tiger, Part 2", "http://www.javaworld.com/article/2072759/core-java/taming-porn--part-2.html", "http://www.javaworld.com");
         isKidFriendlyEligible = webLink.isKidFriendlyEligible();
@@ -38,7 +38,7 @@ public class WebLinkTest {
     @Test
     public void isKidFriendlyEligible_shouldReturnTrue_ifAdultInURL_butNotInHost() {
         // Test 4: adult in url, but not in host --true
-        webLink = BookmarkManager.getInstance().createWebLink(2000, "Taming Porn, Part 2", "http://www.javaworld.com/article/2072759/core-java/taming-adult--part-2.html", "http://www.javaworld.com");
+        webLink = BookmarkManager.getInstance().createWebLink(2000, "Taming Tiger, Part 2", "http://www.javaworld.com/article/2072759/core-java/taming-adult--part-2.html", "http://www.javaworld.com");
         isKidFriendlyEligible = webLink.isKidFriendlyEligible();
         assertTrue("For adult in URL but not host, isKidFriendlyEligible must return true", isKidFriendlyEligible);
     }

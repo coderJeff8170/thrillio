@@ -1,5 +1,7 @@
 package com.cognizant.thrillio.entities;
 
+import com.cognizant.thrillio.constants.BookGenre;
+
 import java.util.Arrays;
 
 public class Book extends Bookmark {
@@ -62,6 +64,9 @@ public class Book extends Bookmark {
 
     @Override
     public boolean isKidFriendlyEligible() {
+        if(getGenre().equals(BookGenre.PHILOSOPHY) || getGenre().equals(BookGenre.SELF_HELP)) {
+            return false;
+        }
         return true;
     }
 
