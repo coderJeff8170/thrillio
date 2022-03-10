@@ -1,6 +1,8 @@
 package com.cognizant.thrillio.entities;
 
 import com.cognizant.thrillio.constants.MovieGenre;
+import com.cognizant.thrillio.partner.Shareable;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 
@@ -64,11 +66,12 @@ public class Movie extends Bookmark {
 
     @Override
     public boolean isKidFriendlyEligible() {
-        System.out.println(getGenre());
+//        System.out.println(getGenre());
         //if genre is thrillers or horror return false
         if(getGenre().equals(MovieGenre.HORROR) || getGenre().equals(MovieGenre.THRILLERS)) {
             return false;
         }
         return true;
     }
+
 }

@@ -1,6 +1,9 @@
 package com.cognizant.thrillio.entities;
 
-public class WebLink extends Bookmark {
+import com.cognizant.thrillio.partner.Shareable;
+import org.apache.commons.lang3.StringUtils;
+
+public class WebLink extends Bookmark implements Shareable {
     private String url;
     private String host;
 
@@ -35,5 +38,18 @@ public class WebLink extends Bookmark {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String getItemData() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<item>");
+            sb.append("<type>WebLink</type>");
+            sb.append("<title>").append(getTitle()).append("</title>");
+            sb.append("<url>").append(url).append("</url>");
+            sb.append("<host>").append(host).append("</host>");
+        sb.append("</item>");
+
+        return sb.toString();
     }
 }
