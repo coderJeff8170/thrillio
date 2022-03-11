@@ -5,6 +5,7 @@ import com.cognizant.thrillio.constants.UserType;
 import com.cognizant.thrillio.controllers.BookmarkController;
 import com.cognizant.thrillio.entities.Bookmark;
 import com.cognizant.thrillio.entities.User;
+import com.cognizant.thrillio.partner.Shareable;
 
 public class View {
     //    public static void bookmark(User user, Bookmark[][] bookmarks) {
@@ -31,7 +32,7 @@ public class View {
                 //user browses and makes decision
                 if (bookmarkCount < DataStore.USER_BOOKMARK_LIMIT) {
                     //if less than allowed bookmarks, decide
-                    boolean isBookmarkSelected = isBookmarkSelected(bookmark);
+                    boolean isBookmarkSelected = getDecision();
                     //if decided,  add bookmark and increment count
                     if (isBookmarkSelected) {
                         BookmarkController.getInstance().saveUserBookmark(user, bookmark);
@@ -43,8 +44,15 @@ public class View {
                         if (bookmark.isKidFriendlyEligible() && bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN)) {
                             String kidFriendlyStatus = getKidFriendlyStatusDecision(bookmark);
                             if(!kidFriendlyStatus.equals(KidFriendlyStatus.UNKNOWN)) {
-                                bookmark.setKidFriendlyStatus(kidFriendlyStatus);
-                                System.out.println("Kid friendly status: " + kidFriendlyStatus + ", " + bookmark);
+                                BookmarkController.getInstance().setKidFriendlyStatus(user, kidFriendlyStatus, bookmark);
+                            }
+                        }
+                        //if approved, share kid friendly bookmark
+                        if(bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.APPROVED)
+                                && bookmark instanceof Shareable) {
+                            boolean isShared = getDecision();
+                            if (isShared) {
+                                BookmarkController.getInstance().share(user, bookmark);
                             }
                         }
                     }
@@ -54,12 +62,13 @@ public class View {
 
     }
 
+    //TODO: these simulate user interaction - need to refactor in IO
     private static String getKidFriendlyStatusDecision(Bookmark bookmark) {
         double randomValue = Math.random();
         return randomValue < 0.4 ? KidFriendlyStatus.APPROVED : (randomValue >= 0.4 && randomValue < 0.8) ? KidFriendlyStatus.REJECTED : KidFriendlyStatus.UNKNOWN;
     }
 
-    private static boolean isBookmarkSelected(Bookmark bookmark) {
+    private static boolean getDecision() {
         return Math.random() < 0.5 ? true : false;
     }
 }
