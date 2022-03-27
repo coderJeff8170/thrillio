@@ -2,6 +2,11 @@ package com.cognizant.thrillio.managers;
 
 import com.cognizant.thrillio.dao.BookmarkDao;
 import com.cognizant.thrillio.entities.*;
+import com.cognizant.thrillio.util.HttpConnect;
+import com.cognizant.thrillio.util.IOUtil;
+
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 
 /**
  * @author cognizant
@@ -66,6 +71,25 @@ public class BookmarkManager {
         UserBookmark userBookmark = new UserBookmark();
         userBookmark.setUser(user);
         userBookmark.setBookmark(bookmark);
+
+        //if weblink and doesn't end with pdf, download to disk
+        if (bookmark instanceof WebLink) {
+            try {
+                String url = ((WebLink)bookmark).getUrl();
+                if (!url.endsWith(".pdf")) {
+                    String webpage = HttpConnect.download(((WebLink)bookmark).getUrl());
+                    if (webpage != null) {
+                        IOUtil.write(webpage, bookmark.getId());
+                    }
+                }
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
         //save userBookmark instance to data access object
         dao.saveUserBookmark(userBookmark);
     }
