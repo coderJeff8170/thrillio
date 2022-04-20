@@ -7,6 +7,7 @@ import com.cognizant.thrillio.util.IOUtil;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.util.List;
 
 /**
  * @author cognizant
@@ -62,7 +63,7 @@ public class BookmarkManager {
         return movie;
     }
 
-    public Bookmark[][] getBookmarks() {
+    public List<List<Bookmark>> getBookmarks() {
         return dao.getBookmarks();
     }
 

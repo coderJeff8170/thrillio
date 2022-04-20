@@ -3,6 +3,8 @@ package com.cognizant.thrillio.managers;
 import com.cognizant.thrillio.dao.UserDao;
 import com.cognizant.thrillio.entities.User;
 
+import java.util.List;
+
 /**
  * @author cognizant
  */
@@ -30,7 +32,7 @@ public class UserManager {
         return user;
     }
 
-    public User[] getUsers() {
+    public List<User> getUsers() {
         return dao.getUsers();
     }
 

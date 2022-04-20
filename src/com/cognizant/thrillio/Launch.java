@@ -6,13 +6,14 @@ import com.cognizant.thrillio.managers.BookmarkManager;
 import com.cognizant.thrillio.managers.UserManager;
 
 import javax.xml.crypto.Data;
+import java.util.List;
 
 /**
  * @author cognizant
  */
 public class Launch {
-    private static User[] users;
-    private static Bookmark[][] bookmarks;
+    private static List<User> users;
+    private static List<List<Bookmark>> bookmarks;
 
     private static void loadData() {
         System.out.println("1. loading data ...");
@@ -33,7 +34,7 @@ public class Launch {
     }
 
     private static void printBookmarkData() {
-        for(Bookmark[] bookmarks : bookmarks) {
+        for(List<Bookmark> bookmarks : bookmarks) {
             for(Bookmark bookmark : bookmarks) {
                 System.out.println(bookmark);
             }

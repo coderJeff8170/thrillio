@@ -3,9 +3,12 @@ package com.cognizant.thrillio;
 import com.cognizant.thrillio.constants.KidFriendlyStatus;
 import com.cognizant.thrillio.constants.UserType;
 import com.cognizant.thrillio.controllers.BookmarkController;
+import com.cognizant.thrillio.entities.Book;
 import com.cognizant.thrillio.entities.Bookmark;
 import com.cognizant.thrillio.entities.User;
 import com.cognizant.thrillio.partner.Shareable;
+
+import java.util.List;
 
 public class View {
     //    public static void bookmark(User user, Bookmark[][] bookmarks) {
@@ -23,14 +26,14 @@ public class View {
 //            System.out.println(bookmark);
 //        }
 //    }
-    public static void browse(User user, Bookmark[][] bookmarks) {
+    public static void browse(User user, List<List<Bookmark>> bookmarks) {
         System.out.println("\n" + user.getEmail() + " is browsing ...");
         //iterate thru the bookmarks
         int bookmarkCount = 0;
-        for (Bookmark[] bookmarkArr : bookmarks) {
+        for (List<Bookmark> bookmarkArr : bookmarks) {
             for (Bookmark bookmark : bookmarkArr) {
                 //user browses and makes decision
-                if (bookmarkCount < DataStore.USER_BOOKMARK_LIMIT) {
+//                if (bookmarkCount < DataStore.USER_BOOKMARK_LIMIT) {
                     //if less than allowed bookmarks, decide
                     boolean isBookmarkSelected = getDecision();
                     //if decided,  add bookmark and increment count
@@ -56,7 +59,7 @@ public class View {
                             }
                         }
                     }
-                }
+//                }
             }
         }
 
