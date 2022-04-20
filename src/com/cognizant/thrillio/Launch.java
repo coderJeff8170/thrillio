@@ -21,10 +21,6 @@ public class Launch {
 
         users = UserManager.getInstance().getUsers();
         bookmarks = BookmarkManager.getInstance().getBookmarks();
-
-//        System.out.println("printing data ...");
-//        printBookmarkData();
-//        printUserData();
     }
 
     private static void printUserData() {
@@ -42,16 +38,13 @@ public class Launch {
     }
 
     private static void start() {
-//        System.out.println("\n2. Bookmarking ...");
         //invoke bookmark method for all users
         for(User user : users) {
             View.browse(user, bookmarks);
         }
     }
 
-
     public static void main(String[] args) {
-
         loadData();
         start();
     }

@@ -22,7 +22,6 @@ public class BookmarkManager {
         return bookmarkManager;
     }
 
-
     public Book createBook(long id, String title, int publicationYear, String publisher, String[] authors, String genre, double amazonRating) {
         Book book = new Book();
 

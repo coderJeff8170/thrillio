@@ -1,6 +1,5 @@
 package com.cognizant.thrillio.dao;
 
-
 import com.cognizant.thrillio.DataStore;
 import com.cognizant.thrillio.entities.User;
 
