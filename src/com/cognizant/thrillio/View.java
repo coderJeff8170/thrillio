@@ -24,10 +24,10 @@ public class View {
                     System.out.println("new item bookmarked -- " + bookmark);
                 }
                 //mark as kid friendly - only editor and chief editor can do this
-                if (user.getUserType().equals(UserType.EDITOR) || user.getUserType().equals(UserType.CHIEF_EDITOR)) {
-                    if (bookmark.isKidFriendlyEligible() && bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN)) {
-                        String kidFriendlyStatus = getKidFriendlyStatusDecision(bookmark);
-                        if(!kidFriendlyStatus.equals(KidFriendlyStatus.UNKNOWN)) {
+                if (user.getUserType().equals(UserType.valueOf("EDITOR")) || user.getUserType().equals(UserType.valueOf("CHIEF_EDITOR"))) {
+                    if (bookmark.isKidFriendlyEligible() && bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.valueOf("UNKNOWN"))) {
+                        KidFriendlyStatus kidFriendlyStatus = getKidFriendlyStatusDecision(bookmark);
+                        if(!kidFriendlyStatus.equals(KidFriendlyStatus.valueOf("UNKNOWN"))) {
                             BookmarkController.getInstance().setKidFriendlyStatus(user, kidFriendlyStatus, bookmark);
                         }
                     }
@@ -46,9 +46,9 @@ public class View {
     }
 
     //TODO: these simulate user interaction - need to refactor in IO
-    private static String getKidFriendlyStatusDecision(Bookmark bookmark) {
+    private static KidFriendlyStatus getKidFriendlyStatusDecision(Bookmark bookmark) {
         double randomValue = Math.random();
-        return randomValue < 0.4 ? KidFriendlyStatus.APPROVED : (randomValue >= 0.4 && randomValue < 0.8) ? KidFriendlyStatus.REJECTED : KidFriendlyStatus.UNKNOWN;
+        return randomValue < 0.4 ? KidFriendlyStatus.valueOf("APPROVED") : (randomValue >= 0.4 && randomValue < 0.8) ? KidFriendlyStatus.valueOf("REJECTED") : KidFriendlyStatus.valueOf("UNKNOWN");
     }
 
     private static boolean getDecision() {

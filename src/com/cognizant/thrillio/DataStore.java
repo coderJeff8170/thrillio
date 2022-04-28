@@ -1,6 +1,9 @@
 package com.cognizant.thrillio;
 
+import com.cognizant.thrillio.constants.BookGenre;
 import com.cognizant.thrillio.constants.Gender;
+import com.cognizant.thrillio.constants.MovieGenre;
+import com.cognizant.thrillio.constants.UserType;
 import com.cognizant.thrillio.entities.Bookmark;
 import com.cognizant.thrillio.entities.User;
 import com.cognizant.thrillio.entities.UserBookmark;
@@ -41,14 +44,14 @@ public class DataStore {
         for (String row : data) {
             String[] values = row.split("\t");
 
-            int gender = Gender.MALE;
+            Gender gender = Gender.MALE;
             if (values[5].equals("f")) {
                 gender = Gender.FEMALE;
             } else if (values[5].equals("t")) {
                 gender = Gender.TRANSGENDER;
             }
 
-            User user = UserManager.getInstance().createUser(Long.parseLong(values[0]), values[1], values[2], values[3], values[4], gender, values[6]);
+            User user = UserManager.getInstance().createUser(Long.parseLong(values[0]), values[1], values[2], values[3], values[4], gender, UserType.valueOf(values[6]));
             users.add(user);
         }
     }
@@ -76,7 +79,7 @@ public class DataStore {
             String[] values = row.split("\t");
             String[] cast = values[3].split(",");
             String[] directors = values[4].split(",");
-            Bookmark bookmark = BookmarkManager.getInstance().createMovie(Long.parseLong(values[0]), values[1], "", Integer.parseInt(values[2]), cast, directors, values[5], Double.parseDouble(values[6])/*, values[7]*/);
+            Bookmark bookmark = BookmarkManager.getInstance().createMovie(Long.parseLong(values[0]), values[1], "", Integer.parseInt(values[2]), cast, directors, MovieGenre.valueOf(values[5]), Double.parseDouble(values[6])/*, values[7]*/);
             bookmarkList.add(bookmark);
         }
         bookmarks.add(bookmarkList);
@@ -91,7 +94,7 @@ public class DataStore {
         for (String row : data) {
             String[] values = row.split("\t");
             String[] authors = values[4].split(",");
-            Bookmark bookmark = BookmarkManager.getInstance().createBook(Long.parseLong(values[0]), values[1], Integer.parseInt(values[2]), values[3], authors, values[5], Double.parseDouble(values[6])/*, values[7]*/);
+            Bookmark bookmark = BookmarkManager.getInstance().createBook(Long.parseLong(values[0]), values[1], Integer.parseInt(values[2]), values[3], authors, BookGenre.valueOf(values[5]), Double.parseDouble(values[6])/*, values[7]*/);
             bookmarkList.add(bookmark);
         }
         bookmarks.add(bookmarkList);

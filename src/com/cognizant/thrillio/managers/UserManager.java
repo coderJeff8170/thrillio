@@ -1,5 +1,7 @@
 package com.cognizant.thrillio.managers;
 
+import com.cognizant.thrillio.constants.Gender;
+import com.cognizant.thrillio.constants.UserType;
 import com.cognizant.thrillio.dao.UserDao;
 import com.cognizant.thrillio.entities.User;
 
@@ -18,8 +20,8 @@ public class UserManager {
         return userManager;
     }
 
-    public User createUser(long id, String email, String password, String firstName, String lastName, int gender,
-                           String userType) {
+    public User createUser(long id, String email, String password, String firstName, String lastName, Gender gender,
+                           UserType userType) {
         User user = new User();
         user.setId(id);
         user.setEmail(email);

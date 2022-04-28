@@ -14,7 +14,7 @@ public class MovieTest {
     //if the movie is either a horror or a thriller, ikf should return false
     @Test
     public void isKidFriendlyEligible_shouldReturnFalse_ifGenreisHorror() {
-        movie = BookmarkManager.getInstance().createMovie(3000, "Citizen Kane", "", 1941, new String[] {"Orson Welles","Joseph Cotten"}, new String[] {"Orson Welles"}, MovieGenre.HORROR, 8.5);
+        movie = BookmarkManager.getInstance().createMovie(3000, "Citizen Kane", "", 1941, new String[] {"Orson Welles","Joseph Cotten"}, new String[] {"Orson Welles"}, MovieGenre.valueOf("HORROR"), 8.5);
         isKidFriendlyEligible = movie.isKidFriendlyEligible();
         assertFalse("for Horror in genre, isKidFriendlyEligible should return false", isKidFriendlyEligible);
     }

@@ -1,5 +1,8 @@
 package com.cognizant.thrillio.managers;
 
+import com.cognizant.thrillio.constants.BookGenre;
+import com.cognizant.thrillio.constants.KidFriendlyStatus;
+import com.cognizant.thrillio.constants.MovieGenre;
 import com.cognizant.thrillio.dao.BookmarkDao;
 import com.cognizant.thrillio.entities.*;
 import com.cognizant.thrillio.util.HttpConnect;
@@ -22,7 +25,7 @@ public class BookmarkManager {
         return bookmarkManager;
     }
 
-    public Book createBook(long id, String title, int publicationYear, String publisher, String[] authors, String genre, double amazonRating) {
+    public Book createBook(long id, String title, int publicationYear, String publisher, String[] authors, BookGenre genre, double amazonRating) {
         Book book = new Book();
 
         book.setId(id);
@@ -47,7 +50,7 @@ public class BookmarkManager {
         return webLink;
     }
 
-    public Movie createMovie(long id, String title, String profileUrl, int releaseYear, String[] cast, String[] directors, String genre, double imdbRating) {
+    public Movie createMovie(long id, String title, String profileUrl, int releaseYear, String[] cast, String[] directors, MovieGenre genre, double imdbRating) {
         Movie movie = new Movie();
 
         movie.setId(id);
@@ -73,6 +76,7 @@ public class BookmarkManager {
         userBookmark.setBookmark(bookmark);
 
         //if weblink and doesn't end with pdf, download to disk
+        /*
         if (bookmark instanceof WebLink) {
             try {
                 String url = ((WebLink)bookmark).getUrl();
@@ -90,11 +94,12 @@ public class BookmarkManager {
                 e.printStackTrace();
             }
         }
+         */
         //save userBookmark instance to data access object
         dao.saveUserBookmark(userBookmark);
     }
 
-    public void setKidFriendlyStatus(User user, String kidFriendlyStatus, Bookmark bookmark) {
+    public void setKidFriendlyStatus(User user, KidFriendlyStatus kidFriendlyStatus, Bookmark bookmark) {
         bookmark.setKidFriendlyStatus(kidFriendlyStatus);
         bookmark.setKidFriendlyMarkedBy(user);
         System.out.println("Kid friendly status: " + kidFriendlyStatus + ", Marked by: " + user.getEmail() + ", " + bookmark);
