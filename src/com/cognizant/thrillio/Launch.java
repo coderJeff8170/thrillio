@@ -1,5 +1,6 @@
 package com.cognizant.thrillio;
 
+import com.cognizant.thrillio.bgjobs.WebpageDownloaderTask;
 import com.cognizant.thrillio.entities.Bookmark;
 import com.cognizant.thrillio.entities.User;
 import com.cognizant.thrillio.managers.BookmarkManager;
@@ -47,9 +48,15 @@ public class Launch {
     public static void main(String[] args) {
         loadData();
         start();
+
+        //background jobs
+        runDownloaderJob();
     }
 
-
+    private static void runDownloaderJob() {
+        WebpageDownloaderTask task = new WebpageDownloaderTask(true);
+        (new Thread(task)).start();
+    }
 
 
 }
