@@ -23,6 +23,7 @@ public enum MovieGenre {
     CLASSIC_MOVIE_MUSICALS("Classic Movie Musicals"),
     FAITH_AND_SPIRITUALITY("Faith & Spirituality"),
     FOREIGN_DRAMAS("Foreign Dramas"),
+    FOREIGN_ACTION_AND_ADVENTURE("Foreign Action & Adventure"),
     FOREIGN_THRILLERS("Foreign Thrillers"),
     TV_SHOWS("Tv Shows"),
     DRAMAS("Dramas"),

@@ -19,9 +19,14 @@ public class Launch {
     private static void loadData() {
         System.out.println("1. loading data ...");
         DataStore.loadData();
+        System.out.println("2. printing data ...");
+
 
         users = UserManager.getInstance().getUsers();
         bookmarks = BookmarkManager.getInstance().getBookmarks();
+
+        printUserData();
+        printBookmarkData();
     }
 
     private static void printUserData() {
@@ -46,11 +51,12 @@ public class Launch {
     }
 
     public static void main(String[] args) {
+
         loadData();
-        start();
+//        start();
 
         //background jobs
-        runDownloaderJob();
+//        runDownloaderJob();
     }
 
     private static void runDownloaderJob() {

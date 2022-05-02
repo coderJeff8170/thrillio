@@ -10,6 +10,7 @@ import com.cognizant.thrillio.util.IOUtil;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
