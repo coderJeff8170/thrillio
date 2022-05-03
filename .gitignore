@@ -1,8 +1,4 @@
 .idea/
 thrillio.iml
 /pages
-/src/com/cognizant/thrillio/constants/EnvironmentVariables.java
-/src/com/cognizant/thrillio/constants/EnvironmentVariables.class
-/src/com/cognizant/thrillio/constants/EnvironsVars.java
-/resources
 /out

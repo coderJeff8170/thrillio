@@ -9,6 +9,7 @@ import com.cognizant.thrillio.managers.UserManager;
 import javax.xml.crypto.Data;
 import java.util.List;
 
+
 /**
  * @author cognizant
  */
@@ -51,6 +52,7 @@ public class Launch {
     }
 
     public static void main(String[] args) {
+
         loadData();
         start();
 
