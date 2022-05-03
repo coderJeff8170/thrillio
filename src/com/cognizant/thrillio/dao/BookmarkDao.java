@@ -22,7 +22,7 @@ public class BookmarkDao {
 
     public void saveUserBookmark(UserBookmark userBookmark) {
         //DataStore.add(userBookmark);
-        try(Connection conn = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?allowPublicKeyRetrieval=true&useSSL=false", USER, PASSWORD);
+        try(Connection conn = DriverManager.getConnection(THRILLIO_CONNECTION_STRING, USER, PASSWORD);
             Statement stmt = conn.createStatement();) {
            if(userBookmark.getBookmark() instanceof Book) {
                saveUserBook(userBookmark, stmt);
@@ -90,7 +90,7 @@ public class BookmarkDao {
             tableToUpdate = "WebLink";
         }
 
-        try(Connection conn = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?allowPublicKeyRetrieval=true&useSSL=false", USER, PASSWORD);
+        try(Connection conn = DriverManager.getConnection(THRILLIO_CONNECTION_STRING, USER, PASSWORD);
             Statement stmt = conn.createStatement();) {
             String query = "update " + tableToUpdate + " set kid_friendly_status = " + kidFriendlyStatus + ", kid_friendly_marked_by = " +
                     userId + " where id = " + bookmark.getId();
@@ -112,7 +112,7 @@ public class BookmarkDao {
             tableToUpdate = "WebLink";
         }
 
-        try(Connection conn = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?allowPublicKeyRetrieval=true&useSSL=false", USER, PASSWORD);
+        try(Connection conn = DriverManager.getConnection(THRILLIO_CONNECTION_STRING, USER, PASSWORD);
             Statement stmt = conn.createStatement();) {
             String query = "update " + tableToUpdate + " set shared_by = " + userId +
                     " where id = " + bookmark.getId();

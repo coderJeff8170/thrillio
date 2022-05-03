@@ -48,7 +48,7 @@ public class DataStore {
 
         //try-with-resources ==> conn and stmt will be close automagically
         //Connection string format: <protocol>:<sub-protocol>:<data-source details>
-        try(Connection conn = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?allowPublicKeyRetrieval=true&useSSL=false", USER, PASSWORD);
+        try(Connection conn = DriverManager.getConnection(THRILLIO_CONNECTION_STRING, USER, PASSWORD);
             Statement stmt = conn.createStatement()) {
 
             loadUsers(stmt);
