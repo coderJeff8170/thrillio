@@ -12,6 +12,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.cognizant.thrillio.constants.EnvironmentVariables.*;
+
 /**
  * @author cognizant
  */
@@ -46,8 +48,9 @@ public class DataStore {
 
         //try-with-resources ==> conn and stmt will be close automagically
         //Connection string format: <protocol>:<sub-protocol>:<data-source details>
-        try(Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jid_thrillio?useSSL=false", "root", "Password1!");
-            Statement stmt = conn.createStatement();) {
+        try(Connection conn = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?allowPublicKeyRetrieval=true&useSSL=false", USER, PASSWORD);
+            Statement stmt = conn.createStatement()) {
+
             loadUsers(stmt);
             loadWebLinks(stmt);
             loadMovies(stmt);
