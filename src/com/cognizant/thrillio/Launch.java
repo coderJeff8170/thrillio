@@ -53,7 +53,7 @@ public class Launch {
     public static void main(String[] args) {
 
         loadData();
-//        start();
+        start();
 
         //background jobs
 //        runDownloaderJob();
